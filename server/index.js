@@ -4,7 +4,13 @@ const cors = require('cors');
 const UserModel = require('./models/Users');
 
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods : ["POST", "GET"],
+    credentials:true
+  }
+));
 app.use(express.json());
 
 // URL-encoded password for MongoDB connection string
