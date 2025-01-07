@@ -4,14 +4,13 @@ const cors = require('cors');
 const UserModel = require('./models/Users');
 
 const app = express();
-app.use(cors(
-  {
-    origin: [""],
-    methods : ["POST", "GET"],
-    credentials:true
-  }
-));
+app.use(cors({
+  origin: ["http://localhost:5173"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
+app.options("*", cors());
 
 // URL-encoded password for MongoDB connection string
 const dbPassword = '%23Rkavi470%23';  // Your encoded password
@@ -25,6 +24,7 @@ mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@${dbCluster}/${dbName}?r
   .catch((err) => console.log('MongoDB connection error:', err));
 
 app.get('/', (req, res) => {
+ 
   UserModel.find({})
     .then(users => res.json(users))
     .catch(err => res.json(err));
