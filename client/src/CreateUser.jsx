@@ -10,7 +10,7 @@ function CreateUser(){
 
     const Submit = (e) => {
         e.preventDefault();
-        axios.post("crud-app-api-lake.vercel.app/createUser", {name,email,age})
+        axios.post("https://crud-app-api-lake.vercel.app/createUser", {name,email,age})
         .then(result => {
             console.log(result)
             navigate('/')
