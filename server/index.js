@@ -4,15 +4,18 @@ const cors = require('cors');
 const UserModel = require('./models/Users');
 
 const app = express();
-app.use(cors({
-  origin: ["https://crud-app-frontend-vert.vercel.app"],
+
+const corsOptions = {
+  origin: "https://crud-app-frontend-vert.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
-}));
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
-app.options("*", cors());
+app.options("*", cors(corsOptions));
 
 // URL-encoded password for MongoDB connection string
 const dbPassword = '%23Rkavi470%23';  // Your encoded password
