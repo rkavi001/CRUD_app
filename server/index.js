@@ -6,7 +6,7 @@ const UserModel = require('./models/Users');
 const app = express();
 
 const corsOptions = {
-  origin: "https://crud-app-frontend-vert.vercel.app",
+  origin: "http://localhost:5173", // Your frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
